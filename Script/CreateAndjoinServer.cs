@@ -12,9 +12,17 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField InputJoin;
     [SerializeField] TMP_Text status;
 
+    public static CreateAndjoinServer Instance;
+
     private void Awake()
     {
         Username.text = PhotonNetwork.NickName;
+        Instance = this;
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void CreateRoom()
@@ -43,8 +51,11 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
         print("OnJoinRoomFailed" + message);
     }
 
+    public List<RoomInfo> roomInfos = new List<RoomInfo>();
+
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        roomInfos = roomList;
         print("OnRoomListUpdate");
         status.text = $"Room {roomList.Count}";
 

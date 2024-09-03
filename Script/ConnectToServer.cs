@@ -3,12 +3,19 @@ using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     TMP_Text Username;
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            BtnSubmit();
+        }
+    }
 
     public void BtnSubmit()
     {
