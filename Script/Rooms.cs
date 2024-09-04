@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Rooms : MonoBehaviourPunCallbacks
 {
@@ -19,14 +19,31 @@ public class Rooms : MonoBehaviourPunCallbacks
 
     public void RefreshPage()
     {
-        var roomInfos = CreateAndjoinServer.Instance.roomInfos;
 
+        foreach (Transform child in Space.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        var roomInfos = CreateAndjoinServer.Instance.roomInfos;
         status.text = $"Room {roomInfos.Count}";
 
-        for (int i = roomInfos.Count; i > 0; i--)
+        foreach (RoomInfo room in roomInfos)
         {
+            Debug.Log("Room Name: " + room.Name);
             var Pref = Instantiate(RoomPref, Space.transform);
+            Pref.GetComponentInChildren<TMP_Text>().text = room.Name;
+            Pref.onClick.AddListener(() => {
+
+                PhotonNetwork.JoinRoom(room.Name);
+            });
         }
+
+    }
+
+    public override void OnJoinedRoom()
+    {
+        SceneManager.LoadScene("Game");
     }
 
 }

@@ -20,14 +20,11 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
         Instance = this;
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom(InputCreate.text);
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 4;
+        PhotonNetwork.CreateRoom(InputCreate.text,roomOptions,TypedLobby.Default);
     }
 
     public void JoinRoom()
@@ -56,12 +53,6 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         roomInfos = roomList;
-        print("OnRoomListUpdate");
         status.text = $"Room {roomList.Count}";
-
-        for (int i = 0; i < roomList.Count; i++)
-        {
-            print(roomList[i].Name);
-        }
     }
 }
