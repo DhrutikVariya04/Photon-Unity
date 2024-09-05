@@ -30,7 +30,6 @@ public class Rooms : MonoBehaviourPunCallbacks
 
         foreach (RoomInfo room in roomInfos)
         {
-            Debug.Log("Room Name: " + room.Name);
             var Pref = Instantiate(RoomPref, Space.transform);
             Pref.GetComponentInChildren<TMP_Text>().text = room.Name;
             Pref.onClick.AddListener(() => {
@@ -41,9 +40,13 @@ public class Rooms : MonoBehaviourPunCallbacks
 
     }
 
+    public void Back()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
     public override void OnJoinedRoom()
     {
         SceneManager.LoadScene("Game");
     }
-
 }

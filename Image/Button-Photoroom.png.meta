@@ -126,10 +126,10 @@ TextureImporter:
       name: Button-Photoroom_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 538
-        width: 327
-        height: 157
+        x: 45
+        y: 539
+        width: 310
+        height: 136
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: Button-Photoroom_1
       rect:
         serializedVersion: 2
-        x: 380
-        y: 538
-        width: 335
-        height: 154
+        x: 387
+        y: 542
+        width: 305
+        height: 130
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: Button-Photoroom_2
       rect:
         serializedVersion: 2
-        x: 373
-        y: 370
-        width: 342
-        height: 145
+        x: 384
+        y: 382
+        width: 311
+        height: 119
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: Button-Photoroom_4
       rect:
         serializedVersion: 2
-        x: 29
-        y: 218
-        width: 336
-        height: 133
+        x: 46
+        y: 229
+        width: 302
+        height: 118
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

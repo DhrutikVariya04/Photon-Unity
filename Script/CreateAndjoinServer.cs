@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using System.Collections.Generic;
+using System.Linq;
 
 public class CreateAndjoinServer : MonoBehaviourPunCallbacks
 {
     [SerializeField] TMP_Text Username;
-    [SerializeField] TMP_InputField InputCreate;
-    [SerializeField] TMP_InputField InputJoin;
+    [SerializeField] TMP_InputField Input;
     [SerializeField] TMP_Text status;
 
     public static CreateAndjoinServer Instance;
@@ -19,17 +19,17 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
         Username.text = PhotonNetwork.NickName;
         Instance = this;
     }
-
+   
     public void CreateRoom()
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
-        PhotonNetwork.CreateRoom(InputCreate.text,roomOptions,TypedLobby.Default);
+        PhotonNetwork.CreateRoom(Input.text, roomOptions);
     }
 
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom(InputJoin.text);
+        PhotonNetwork.JoinRoom(Input.text);
     }
 
     public void btnRoomList()
@@ -40,7 +40,6 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         SceneManager.LoadScene("Game");
-        print(PhotonNetwork.CountOfPlayersInRooms);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -55,4 +54,10 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
         roomInfos = roomList;
         status.text = $"Room {roomList.Count}";
     }
+
+    public override void OnFriendListUpdate(List<FriendInfo> friendList)
+    {
+        print("OnFriendListUpdate: " + friendList.Count);
+    }
+
 }
