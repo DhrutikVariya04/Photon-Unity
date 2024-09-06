@@ -9,7 +9,7 @@ using System.Linq;
 public class CreateAndjoinServer : MonoBehaviourPunCallbacks
 {
     [SerializeField] TMP_Text Username;
-    [SerializeField] TMP_InputField Input;
+    [SerializeField] TMP_InputField InputCreate;
     [SerializeField] TMP_Text status;
 
     public static CreateAndjoinServer Instance;
@@ -19,17 +19,29 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
         Username.text = PhotonNetwork.NickName;
         Instance = this;
     }
-   
+
+    private void Update()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("Loading");
+                return;
+            }
+        }
+    }
+
     public void CreateRoom()
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
-        PhotonNetwork.CreateRoom(Input.text, roomOptions);
+        PhotonNetwork.CreateRoom(InputCreate.text, roomOptions);
     }
 
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom(Input.text);
+        PhotonNetwork.JoinRoom(InputCreate.text);
     }
 
     public void btnRoomList()

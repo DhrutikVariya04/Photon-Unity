@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class Rooms : MonoBehaviourPunCallbacks
 {
@@ -17,6 +18,18 @@ public class Rooms : MonoBehaviourPunCallbacks
         RefreshPage();
     }
 
+    private void Update()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("Lobby");
+                return;
+            }
+        }
+    }
+
     public void RefreshPage()
     {
 
@@ -25,14 +38,16 @@ public class Rooms : MonoBehaviourPunCallbacks
             Destroy(child.gameObject);
         }
 
-        var roomInfos = CreateAndjoinServer.Instance.roomInfos;
+
+        List<RoomInfo> roomInfos = CreateAndjoinServer.Instance.roomInfos;
         status.text = $"Room {roomInfos.Count}";
 
         foreach (RoomInfo room in roomInfos)
         {
             var Pref = Instantiate(RoomPref, Space.transform);
             Pref.GetComponentInChildren<TMP_Text>().text = room.Name;
-            Pref.onClick.AddListener(() => {
+            Pref.onClick.AddListener(() =>
+            {
 
                 PhotonNetwork.JoinRoom(room.Name);
             });

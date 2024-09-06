@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Username: {fileID: 2079426571}
-  Input: {fileID: 1496994179}
+  InputCreate: {fileID: 1496994179}
   status: {fileID: 1347613108}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

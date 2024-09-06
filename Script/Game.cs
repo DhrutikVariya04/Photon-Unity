@@ -11,10 +11,12 @@ public class Game : MonoBehaviourPunCallbacks
     [SerializeField]
     TMP_Text Username;
 
-    private void Start()
+    private void Awake()
     {
+        print("Awake");
         printAllPlayer();
     }
+
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
