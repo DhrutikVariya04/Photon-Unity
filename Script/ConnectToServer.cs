@@ -5,6 +5,8 @@ using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
 using WebSocketSharp;
+using System.Xml;
+using UnityEditor;
 
 
 public class ConnectToServer : MonoBehaviourPunCallbacks
@@ -14,6 +16,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     [SerializeField]
     TMP_Text Username;
+
+    private string checkingNull = "";
 
     void Update()
     {
@@ -30,15 +34,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void BtnSubmit()
     {
-        if (Username.text.IsNullOrEmpty())
-        {
-            PhotonNetwork.NickName = Username.text;
-            PhotonNetwork.ConnectUsingSettings();
-        }
-        else
-        {
-            showToast("invalid username");
-        }
+        PhotonNetwork.NickName = Username.text;
+        PhotonNetwork.ConnectUsingSettings();
     }
 
     public override void OnConnectedToMaster()
