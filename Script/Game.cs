@@ -2,8 +2,6 @@ using TMPro;
 using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviourPunCallbacks
@@ -44,6 +42,7 @@ public class Game : MonoBehaviourPunCallbacks
         foreach (var p in PhotonNetwork.PlayerList)
         {
             Username.text += "\n" + p.NickName;
+            Toast.ShowToast(p.NickName);
         }
     }
 

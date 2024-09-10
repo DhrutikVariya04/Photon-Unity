@@ -4,9 +4,6 @@ using UnityEngine;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
-using WebSocketSharp;
-using System.Xml;
-using UnityEditor;
 
 
 public class ConnectToServer : MonoBehaviourPunCallbacks

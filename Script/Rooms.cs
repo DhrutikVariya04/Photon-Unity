@@ -3,7 +3,6 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
-using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 

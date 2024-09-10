@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using System.Collections.Generic;
-using System.Linq;
 
 public class CreateAndjoinServer : MonoBehaviourPunCallbacks
 {
@@ -42,6 +41,7 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
     public void JoinRoom()
     {
         PhotonNetwork.JoinRoom(InputCreate.text);
+        Toast.ShowToast("Join Room Successfully");
     }
 
     public void btnRoomList()
@@ -52,6 +52,7 @@ public class CreateAndjoinServer : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         SceneManager.LoadScene("Game");
+        Toast.ShowToast("Join Room Successfully");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
