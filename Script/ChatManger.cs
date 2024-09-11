@@ -1,27 +1,23 @@
+using TMPro;
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviourPun
 {
+    [SerializeField]
+    TMP_InputField MessagesField;
 
-    public InputField userMessage;
-    public Text allMessageText;
-
-
-    public void sendMessage()
+    [SerializeField]
+    TMP_Text allText;
+    public void btnSend()
     {
-        string msg = userMessage.text;
-        photonView.RPC("receiveMessage", RpcTarget.All, PhotonNetwork.NickName, msg, 100);
+        var message = MessagesField.text;
+        photonView.RPC("ReceiveMessages", RpcTarget.All,PhotonNetwork.NickName,message);
     }
-
 
     [PunRPC]
-    public void receiveMessage(string name, string message, int tt)
+    public void ReceiveMessages(string NickName, string message)
     {
-        allMessageText.text += ($"{name} -> {message}\n");
+        allText.text += $"{NickName} ===> {message}\n";
     }
-
 }

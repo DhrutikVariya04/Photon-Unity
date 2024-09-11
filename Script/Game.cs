@@ -42,8 +42,9 @@ public class Game : MonoBehaviourPunCallbacks
         foreach (var p in PhotonNetwork.PlayerList)
         {
             Username.text += "\n" + p.NickName;
-            Toast.ShowToast(p.NickName);
+            //Toast.ShowToast(p.NickName);
         }
     }
+   
 
 }

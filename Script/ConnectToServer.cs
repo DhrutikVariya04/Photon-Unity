@@ -8,13 +8,8 @@ using System.Runtime.InteropServices;
 
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
-    [DllImport("ToastPlugin")]
-    private static extern void showToast(string message);
-
     [SerializeField]
     TMP_Text Username;
-
-    private string checkingNull = "";
 
     void Update()
     {
