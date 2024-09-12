@@ -11,7 +11,6 @@ public class Game : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        print("Awake");
         printAllPlayer();
     }
 
